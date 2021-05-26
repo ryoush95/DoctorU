@@ -94,6 +94,7 @@ public class SignupActivity extends AppCompatActivity {
         }
     };
 
+
     String extractIDFromEmail(String email){
         String[] parts = email.split("@");
         return parts[0];
