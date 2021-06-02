@@ -259,7 +259,7 @@ public class BotFragment extends Fragment {
                         break;
                     }
                 }
-                chatbot = new Chatbot("나", ucurrent);
+                chatbot = new Chatbot(fuser, ucurrent);
                 Chatbot chatbot1 = new Chatbot("bot", bcurrent);
                 if (ucurrent.equals("")) {
                     arrayList.add(chatbot1);

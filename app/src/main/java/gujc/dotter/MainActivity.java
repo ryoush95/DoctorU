@@ -26,6 +26,7 @@ import gujc.dotter.fragment.BoardFragment;
 import gujc.dotter.fragment.ChartFragment;
 import gujc.dotter.fragment.ChatRoomFragment;
 import gujc.dotter.fragment.InfoFragment;
+import gujc.dotter.fragment.WriteFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0: return new BoardFragment();
                 case 1: return new ChatRoomFragment();
-                case 2: return new ChartFragment();
+                case 2: return new WriteFragment();
                 default: return new InfoFragment();
             }
         }
