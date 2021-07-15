@@ -44,7 +44,6 @@ import gujc.dotter.model.ChatRoomModel;
 import gujc.dotter.model.UserModel;
 
 public class ChartFragment extends Fragment {
-    private Board chart;
     private String myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private String dname;
     private String timestamp1;

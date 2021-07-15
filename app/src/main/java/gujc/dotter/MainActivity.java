@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0: return new BoardFragment();
                 case 1: return new ChatRoomFragment();
-                case 2: return new WriteFragment();
+                case 2: return new ChartFragment();
                 default: return new InfoFragment();
             }
         }
