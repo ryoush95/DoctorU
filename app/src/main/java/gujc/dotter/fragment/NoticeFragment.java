@@ -46,11 +46,12 @@ public class NoticeFragment extends Fragment {
     private String title;
     private String content;
     private Context context;
-    private SparseBooleanArray selectedItems =new SparseBooleanArray();
+    private SparseBooleanArray selectedItems = new SparseBooleanArray();
     private int prePosition = -1;
     private int position1;
 
-    public NoticeFragment(){    }
+    public NoticeFragment() {
+    }
 
     @Override
     public void onStart() {
@@ -113,25 +114,25 @@ public class NoticeFragment extends Fragment {
             timestamp1 = simpleDateFormat.format(notice.getTimestamp());
             holder.timestamp.setText(timestamp1);
             holder.content.setText(notice.getContent());
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (selectedItems.get(position1)) {
-                        // 펼쳐진 Item을 클릭 시
-                        selectedItems.delete(position1);
-                    } else {
-                        // 직전의 클릭됐던 Item의 클릭상태를 지움
-                        selectedItems.delete(prePosition);
-                        // 클릭한 Item의 position을 저장
-                        selectedItems.put(position1, true);
-                    }
-                    // 해당 포지션의 변화를 알림
-                    if (prePosition != -1) notifyItemChanged(prePosition);
-                    notifyItemChanged(position1);
-                    // 클릭된 position 저장
-                    prePosition = position1;
-                }
-            });
+//            holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (selectedItems.get(position1)) {
+//                        // 펼쳐진 Item을 클릭 시
+//                        selectedItems.delete(position1);
+//                    } else {
+//                        // 직전의 클릭됐던 Item의 클릭상태를 지움
+//                        selectedItems.delete(prePosition);
+//                        // 클릭한 Item의 position을 저장
+//                        selectedItems.put(position1, true);
+//                    }
+//                    // 해당 포지션의 변화를 알림
+//                    if (prePosition != -1) notifyItemChanged(prePosition);
+//                    notifyItemChanged(position1);
+//                    // 클릭된 position 저장
+//                    prePosition = position1;
+//                }
+//            });
 
         }
     }
@@ -148,33 +149,44 @@ public class NoticeFragment extends Fragment {
             content = itemView.findViewById(R.id.content);
             timestamp = itemView.findViewById(R.id.timestamp);
 
-            changeVisibility(selectedItems.get(position));
-
-        }
-        private void changeVisibility(final boolean isExpanded) {
-            // height 값을 dp로 지정해서 넣고싶으면 아래 소스를 이용
-            int dpValue = 150;
-            float d = context.getResources().getDisplayMetrics().density;
-            int height = (int) (dpValue * d);
-
-            // ValueAnimator.ofInt(int... values)는 View가 변할 값을 지정, 인자는 int 배열
-            ValueAnimator va = isExpanded ? ValueAnimator.ofInt(0, height) : ValueAnimator.ofInt(height, 0);
-            // Animation이 실행되는 시간, n/1000초
-            va.setDuration(600);
-            va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    // value는 height 값
-                    int value = (int) animation.getAnimatedValue();
-                    // imageView의 높이 변경
-                    content.getLayoutParams().height = value;
-                    content.requestLayout();
-                    // imageView가 실제로 사라지게하는 부분
-                    content.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                public void onClick(View view) {
+                    if (content.getVisibility() == View.GONE) {
+                        content.setVisibility(View.VISIBLE);
+                    } else {
+                        content.setVisibility(View.GONE);
+                    }
                 }
             });
-            // Animation start
-            va.start();
+
+        }
+
+        private void changeVisibility(final boolean isExpanded) {
+//            // height 값을 dp로 지정해서 넣고싶으면 아래 소스를 이용
+//            int dpValue = 150;
+//            float d = context.getResources().getDisplayMetrics().density;
+//            int height = (int) (dpValue * d);
+//
+//            // ValueAnimator.ofInt(int... values)는 View가 변할 값을 지정, 인자는 int 배열
+//            ValueAnimator va = isExpanded ? ValueAnimator.ofInt(0, height) : ValueAnimator.ofInt(height, 0);
+//            // Animation이 실행되는 시간, n/1000초
+//            va.setDuration(600);
+//            va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//                @Override
+//                public void onAnimationUpdate(ValueAnimator animation) {
+//                    // value는 height 값
+//                    int value = (int) animation.getAnimatedValue();
+//                    // imageView의 높이 변경
+//                    content.getLayoutParams().height = value;
+//                    content.requestLayout();
+//                    // imageView가 실제로 사라지게하는 부분
+//                    content.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+//                }
+//            });
+//            // Animation start
+//            va.start();
+//        }
         }
     }
 
