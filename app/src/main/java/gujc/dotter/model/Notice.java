@@ -2,9 +2,12 @@ package gujc.dotter.model;
 
 import com.google.firebase.Timestamp;
 
+import java.util.Date;
+
 public class Notice {
-    String title;
-    String content;
+    public String title;
+    public String content;
+    public Date timestamp;
 
     public String getTitle() {
         return title;
@@ -22,21 +25,15 @@ public class Notice {
         this.content = content;
     }
 
-    public Timestamp getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Date date) {
+        this.timestamp = date;
     }
 
-    Timestamp timestamp;
 
-    public Notice(String title, String content,Timestamp timestamp) {
-        this.title = title;
-        this.content = content;
-        this.timestamp = timestamp;
-    }
 
 
 }

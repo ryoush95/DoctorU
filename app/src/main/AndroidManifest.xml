@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoticeActivity"></activity>
+        <activity android:name=".NoticeActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".bot.BotActivity"
             android:theme="@style/AppTheme.NoActionBar" />
